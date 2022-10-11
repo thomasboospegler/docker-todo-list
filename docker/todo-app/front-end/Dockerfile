@@ -1,12 +1,11 @@
 FROM node:14-alpine
 
+WORKDIR /todo-app/front-end
+
 EXPOSE 3000
 
-WORKDIR /srv/app
+ADD node_modules.tar.gz .
 
-COPY ./src ./src
-COPY ./package-lock.json .
-COPY ./package.json .
-ADD node_modules.tar.gz node_modules
+COPY . .
 
 CMD ["npm", "start"]
